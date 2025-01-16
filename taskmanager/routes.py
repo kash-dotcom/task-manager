@@ -8,6 +8,7 @@ def home():
     tasks = list(Task.query.order_by(Task.task_name).all())
     return render_template("tasks.html", tasks=tasks)
 
+
 @app.route("/categories")
 def categories():
     categories = list(Category.query.order_by(Category.category_name).all())
@@ -48,6 +49,7 @@ def delete_task(task_id):
     db.session.delete(task)
     db.session.commit()
     return redirect(url_for("home"))
+
 
 @app.route("/add_task", methods=["GET", "POST"])
 def add_task():
